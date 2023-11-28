@@ -75,7 +75,8 @@ int main()
 
 		// now we convert the input: 
 		// for n scripts we'll have m config bool values (true = this index's config influences this script)
-
+		// NOTE: the variables are actually integers to allow empty slots => I say TRUE/FALSE as in 1/0
+		
 		// here we create the lists' items beforehand, so we can set individual indexes' values:
 
 		bool finalConfigSetup = false;
