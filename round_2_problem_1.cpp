@@ -75,8 +75,7 @@ int main()
 
 		// now we convert the input: 
 		// for n scripts we'll have m config bool values (true = this index's config influences this script)
-		// NOTE: the variables are actually integers to allow empty slots => I say TRUE/FALSE as in 1/0
-		
+
 		// here we create the lists' items beforehand, so we can set individual indexes' values:
 
 		bool finalConfigSetup = false;
@@ -90,7 +89,7 @@ int main()
 				if(!finalConfigSetup)
 					finalConfig.push_back(-1);
 			}
-			finalConfigSetup = true;
+			finalConfigSetup = true;			// TODO: IF THE CONFIG IS EMPTY, THERE IS NO SOLUTION
 		}
 
 		// here we assign the TRUE values, and calculate all sums for later sorting:
@@ -174,10 +173,14 @@ int main()
 			}
 		}
 		
+		if (std::find(finalConfig.begin(), finalConfig.end(), -1) != finalConfig.end())
+		{
+			noSolution = true;	// If there is a -1 (empty slot) in the final config, we have no solution.
+		}
 
 		// OUTPUT: _________________________________
 		if(noSolution)
-			std::cout << "No solution!" << std::endl;
+			std::cout << "No solution!" << std::endl; 
 		else
 		{
 			for (auto conf : finalConfig)
