@@ -1,3 +1,19 @@
+// this is a solution for 2/10 points (only the first part of the problem) -> https://fiks.fit.cvut.cz/files/tasks/season10/round3/routovani.pdf
+
+// First, we convert ALL IPs into their binary form, and we go through each of the 32 bits.
+// Also, we put all IPs into one subnet together.
+
+// THEN:
+// For each bit, we divide every single subnet into two subnets, based on whether they have a 1 or 0 on this particular bit.
+	// Why? All IPs in these two subnets will now have equal bit value. This will result in a 1 in the final mask.
+
+// Before applying this division, we have to make sure it's not worthless (even with this change, the subnet could still have a zero on this index)
+// If we waste a division right here, we could miss an actually useful division later on.
+// If it's useful, we apply it. If not, we revert it.
+
+// We repeat this process until we have desired number of subnets. 
+// Then we generate the mask and convert it into decimal format. Ta-dah!
+
 #include "pch.h"
 #include <conio.h> 
 #include <iostream>
