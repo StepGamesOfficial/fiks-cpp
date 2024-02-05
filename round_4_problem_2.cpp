@@ -1,3 +1,14 @@
+/*
+
+This is a solution for round 4 problem 2 of FIKS -> 
+
+1) First, we generate an unordered graph
+2) Then, we do a BFS search through the graph.
+	- We do this via a CurrentQueue and NextQueue. (each layer we push NQ into CQ and process CQ)
+ 	- If we encounter an already visited node, we terminate this path.
+  	- If we encounter the end node, we add the solution to "solutions" -> then we pick the one w/ best temperature
+*/
+
 #include "pch.h"
 #include <iostream>
 #include <fstream>
